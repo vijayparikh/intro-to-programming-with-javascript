@@ -1,6 +1,6 @@
 ---
-title: Sample Markdown Book
-subtitle: Markdown is awesome
+title: Introduction to Programming using JavaScript
+subtitle:
 author: Vijay Parikh
 subject: "programming"
 keywords: [books,programming]
@@ -14,7 +14,7 @@ titlepage-background: backgrounds/background10.pdf
 titlepage-text-color: "333333"
 titlepage-rule-color: "00737C"
 papersize: letter
-prepend-titlepage: img/book-cover.pdf
+# prepend-titlepage: img/book-cover.pdf
 colorlinks: true
 listings: true
 ---
