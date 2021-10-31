@@ -12,6 +12,6 @@ pandoc \
     --lua-filter=pagebreak.lua \
     -o build/pdf/output.pdf \
     metadata.yml \
-    src/*/*.md
+    src/*.md
     # --top-level-division=chapter \
     # -V book \

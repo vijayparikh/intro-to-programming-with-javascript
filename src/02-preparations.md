@@ -88,7 +88,7 @@ All 3 of these editors come in Mac, Windows, and Linux versions.
 Avoid using word processors or advanced text editors when writing code: their focus is writing, not coding, and they often inject invisible characters or whitespace into the document to help format and style it. While that can make your prose look great, it doesn't work well with code. Code written with a word processor may not run at all, even if you copy and paste the code into a code editor before saving it.
 
 
-### Stylish JavaScript
+## Stylish JavaScript
 
 The JavaScript community has some stylistic guidelines that help make JavaScript code easier to read and write. Not all of the guidelines agree on all points, but there's plenty of overlap. Adhering to the style conventions of a programming language is helpful and meaningful even if you don't agree with every convention. You probably won't be the sole person developing and maintaining a software project; adhering to a particular style convention helps your teammates and future maintainers understand your code. It's hard enough to understand code written by someone else; don't make it harder with unusual or non-standard stylistic choices.
 
@@ -166,3 +166,183 @@ let sum = x + 5;          // good
 - Use semicolons to terminate each logical line of code unless the line ends with {, }, or :. See the next section for details.
 
 That covers the essential style conventions that you need to get started. If you want more information about JavaScript styling, we recommend [Airbnb's JavaScript style guide](https://github.com/airbnb/javascript). Check it out, but don't try to memorize all of the rules right away.
+
+## Naming conventions
+
+Naming conventions are similar to style conventions (and are often discussed together), but JavaScript naming conventions have more gray areas and complexity than most languages, so we'll discuss them separately.
+
+- Use camelCase formatting for most variable and function names. Such names begin with a lowercase letter. If the name contains multiple words, each subsequent word should begin with an uppercase letter:
+
+``` JavaScript
+let answerToUltimateQuestion = 42;     // initializing a variable
+function fourScoreAndSevenYearsAgo() { // defining a function
+  // do something
+}
+```
+
+- Some function names -- constructor functions -- should normally use PascalCase (also known as CamelCase -- with a capital C) names. For instance:
+
+``` JavaScript
+function DomesticCat(name) {           // defining a function
+  // do something
+}
+```
+
+We discuss constructors briefly a little later.
+
+- Use uppercase names with underscores (SCREAMING_SNAKE_CASE) to represent constants that serve as __unchanging configuration values__ in your program.
+
+``` JavaScript
+const INTEREST_RATE = 0.0525;
+const COURSE_NUMBER = 'JS101';
+const HOST = 'launchschool.com';
+const FIRST_LETTER = 'a';             // magic number
+const LAST_LETTER = 'z';              //
+```
+
+We also use SCREAMING_SNAKE_CASE for constants that represent so-called magic numbers (which may not actually be numbers) -- constants that are important to your program in some way but not as configuration values. For instance:
+
+``` javascript
+const SECONDS_PER_MINUTE = 60;
+const OUNCES_PER_POUND = 16;
+const METERS_PER_KILOMETER = 1000;
+const PI = 3.141528;
+const INPUT_PROMPT = '==>';
+const TODAY = new Date();
+```
+
+Constants used to store functions (a feature we'll learn about later) should follow the same rules as function names: use camelCase for most functions, and PascalCase for constructor functions.
+
+``` JavaScript
+const sayHi = function() {
+  console.log("Hi!");
+};
+
+const Pet = function(name) {
+  this.name = name;
+};
+```
+
+For all other constants, the rules are much more flexible. You may use camelCase, PascalCase, or even SCREAMING_SNAKE_CASE. Use your personal preferences and any guidelines laid out by your teammates to choose your style.
+
+``` JavaScript
+const greetings = `Hi! How are you today?`;
+const DeleteAllTodoLists = "DELETE FROM todolists";
+const FIND_TODOLIST = `SELECT * FROM todolists WHERE id = ${id}`;
+```
+
+All names -- variables and constants as well as functions -- should use the alphabetic and numeric characters only, though SCREAMING_SNAKE_CASE names may use underscores as well. The first character must be alphabetic. Do not use consecutive underscores nor should you use names with underscores at the start or end of the name.
+
+## On Semicolons
+
+When you read JavaScript documentation, books, and articles, most show code that uses semicolons (;) to terminate most statements and expressions, so code ends up looking like this:
+
+``` JavaScript
+let x = 3;
+let y = 5;
+
+if (x === y) {
+  console.log("x is equal to y");
+} else {
+  console.log("x is not equal to y");
+}
+```
+
+As you can see, most lines end with a semicolon; there are exceptions like blank lines and lines that end with { or } and a few other situations. Most JavaScript developers use this style. You should, too, at least while you're at Launch School. At first, it's a bit tricky trying to decide whether you need a semicolon, but JavaScript is forgiving. The style becomes so automatic after a short period that you may find yourself typing semicolons everywhere you write something.
+
+A few sources omit the semicolons entirely:
+
+``` JavaScript
+let x = 3
+let y = 5
+
+if (x === y) {
+  console.log("x is equal to y")
+} else {
+  console.log("x is not equal to y")
+}
+```
+
+A little-known fact is that JavaScript automatically, but invisibly, inserts semicolons where it needs them. Thus, you can omit semicolons from most code. Some experienced developers take advantage of this mechanism and use (and promote) a no-semicolons-ever style. However, the style requires care: the insertion mechanism makes mistakes when it sees your code differently than you intended. That can be tricky to diagnose when it inserts a semicolon where you don't expect or want one. Thus, we discourage using the no-semicolons style in our courses.
+
+The main reason we mention this at all is that we use two different styles to display JavaScript code in this book: traditional and REPL style. Since the REPL style omits semicolons, it's worth knowing why we can do that.
+
+In traditional style, we show the code as you would enter it in a file before running it. There is no special markup to show prompts, return values, or outputs. In this style, we use semicolons consistently. If we need to show some return values or outputs, we'll use comments:
+
+``` JavaScript
+function greeting() {
+  console.log('Get ready!');
+}
+
+greeting(); // => Get ready!
+```
+
+In REPL style, we show code in a way that resembles a Node REPL session or a session in your browser console. A > prompt precedes each statement or expression that we expect you to type. We also precede return values with an = to distinguish them from console outputs that have no prefix at all. Note: don't type the > when entering commands and node doesn't display the =.
+
+``` javascript
+> greeting()
+Get ready!   // console output
+= undefined  // return value of greeting();
+
+> 2 + 2
+= 4          // return value of 2 + 2
+```
+
+Of particular note with REPL style is that we almost never use semicolons. You can type the semicolons if you want, but you don't have to. For the most part, the work you do in a REPL or console session probably won't lead to semicolon insertion issues.
+
+## The Command Line
+
+This section discusses the commands that you need to run and test JavaScript code from the command line. It's by no means exhaustive, but it's enough to get you started. In particular, we'll take a quick peek at Node's interactive coding environment, the Node REPL, which is where you can test JavaScript code snippets in the terminal.
+
+**Note to Windows Users**: The commands we show below may not work from Windows' default command prompt. We recommend that all Windows developers get familiar with a terminal emulator or with Powershell and issue these commands in that environment.
+
+## Command Line Commands
+
+We assume that you know how to find the command line on your computer and enter commands. When you see the $ symbol in our code examples, it represents the command line prompt. The prompt may look different on your computer, which is fine; it varies depending on the machine you are working on and your local configuration. Note: **don't** type the prompt when entering commands.
+
+We'll also refer to the command line as the terminal ("type in your terminal"), and we may sometimes talk about the terminal as the command line ("print to the command line"). The intent is generally clear from context.
+
+Let's walk through some simple commands. Note that lines that begin with # are comments; you don't have to enter them.
+
+``` bash
+# Create a folder named new_dir
+mkdir new_dir
+
+# Navigate into the new_dir folder
+cd new_dir
+
+# Create a file named new_file.js
+touch new_file.js
+
+# Delete the new_file.js file
+rm new_file.js
+
+# Navigate out of the current folder to the one above it
+cd ..
+
+# Delete the new_dir folder
+rmdir new_dir
+```
+
+You can remove the directory and file at the same time with rm -R. Let's repeat the above steps, but this time we'll delete new_dir and the file simultaneously.
+
+``` bash
+# Create a folder named new_dir
+mkdir new_dir
+
+# Navigate into the new_dir folder
+cd new_dir
+
+# Create a file called new_file.js
+touch new_file.js
+
+# Navigate out of the current folder to the one above it
+cd ..
+
+# Delete the new_dir folder and the file new_file.js
+rm -R new_dir
+```
+
+Use **extreme** caution with the rm command. It's destructive and has no built-in way to recover from deleted files. It takes as much effort to wipe out thousands of files and directories with rm as it takes to delete a single file. If in doubt, use your file navigation program (e.g., Explorer or Finder) and delete files and folders that way; it's slower but safer.
+
+That's all the commands you'll need in this book. If you want to gain more comfort and experience with the command line, many books and online tutorials go into far more depth.

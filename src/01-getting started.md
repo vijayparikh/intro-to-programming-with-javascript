@@ -1,3 +1,5 @@
+# Introduction
+
 ## Getting Started
 
 JavaScript was created at Netscape Communications by Brendan Eich in 1995. Netscape and Eich designed JavaScript as a scripting language for use with the company's flagship web browser, Netscape Navigator. Initially known as LiveScript, Netscape changed the name to JavaScript so they could position it as a companion for the Java language, a product of their partner, Sun Microsystems. Apart from some superficial syntactic similarities, though, JavaScript is in no way related to the Java programming language.
@@ -32,7 +34,7 @@ There are also higher-level abstractions. Some JavaScript programmers use the la
 
 As a beginner, it's vital for you to understand how JavaScript, the programming language, and the trendy tools and frameworks that you may have heard about, are at two different levels of abstraction. It's possible to learn the basics of some of these tools without understanding JavaScript; however, to fully take advantage of their power, you must understand the fundamentals first. Learning JavaScript to depth helps you better understand frameworks, and reading and maintaining programs that use those frameworks becomes easier. Understanding lower levels of abstraction will help you make better use of tools with higher abstraction levels. This book teaches you JavaScript so that you can recognize and use higher level abstractions with more granularity.
 
-# Who This Book is For
+## Who This Book is For
 
 This book's intended audience is the inexperienced or brand-new programmer. If you apply the principles and techniques described here, you'll acquire a strong foundation on which to build your JavaScript programming career. You may use this knowledge to continue to learn more integrated concepts.
 
@@ -44,7 +46,7 @@ Perception of a task's difficulty is often inversely proportional to the patienc
 
 A shift in thinking must take place for most people. That will come with practice. Once it happens, your progress will accelerate. That will, in turn, help you develop the ability to think deeply about any programming problem. Most programmers find that being able to think deeply about problems is satisfying, engaging, and a rewarding perk of programming!
 
-# What's Not Covered
+## What's Not Covered
 
 While skimming through the contents of this book, you may notice that it doesn't cover all the topics that other JavaScript books cover. The omissions are intentional: JavaScript and programming are huge topics, and you'll benefit most from focusing on the fundamentals. Our goal is to introduce you to programming. JavaScript, the language, happens to be the vehicle that we are using. As such, it covers the essential information you need to start your journey towards becoming a professional programmer.
 
